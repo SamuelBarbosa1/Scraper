@@ -16,8 +16,8 @@ Este é um projeto de Web Scraper simples usando a linguagem de programação Go
 
 2. **Clone o Repositório**:
     ```bash
-    git clone https://github.com/seu-usuario/nome-do-repositorio.git
-    cd nome-do-repositorio
+    git clone https://github.com/SamuelBarbosa1/Scraper.git
+    cd Scraper
     ```
 
 3. **Instale Dependências**:
