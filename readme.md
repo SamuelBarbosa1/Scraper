@@ -44,3 +44,23 @@ Visitando http://www.iana.org/
 Link encontrado: about/
 Visitando http://www.iana.org/about/
 ```
+
+## Atualizações 
+- 1. Captura de sinais do sistema (SIGINT e SIGTERM):
+Para detectar quando Ctrl + C é pressionado e permitir que o programa execute tarefas de encerramento (como gerar o relatório em PDF e enviar o e-mail) antes de sair.
+
+- 2. Função para geração de relatório PDF (gerarRelatorioPDF):
+Essa função cria um relatório PDF dos preços coletados durante o scraping, salvando-o localmente como relatorio.pdf.
+
+- 3. Envio de e-mail de notificação (enviarNotificacao):
+    A função envia um e-mail informando que o processo de scraping foi concluído com sucesso.
+    Utiliza o pacote gomail para enviar e-mails via SMTP.
+
+- 4. Manuseio de erros de rede:
+    Tratamento de erros de conexão com OnError e uma lógica para retry automático em caso de falhas (exemplo: r.Request.Retry()).
+
+- 5. Atraso aleatório entre requisições:
+    Adicionamos um atraso de tempo aleatório entre requisições para evitar sobrecarregar o site que está sendo raspado.
+
+- 6. Goroutine para capturar sinais e realizar tarefas de limpeza:
+    Uma goroutine foi configurada para aguardar um sinal de interrupção e garantir que as tarefas de geração de PDF e envio de e-mail sejam realizadas antes do encerramento do programa.
