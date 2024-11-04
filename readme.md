@@ -15,7 +15,7 @@ Este é um projeto de Web Scraper simples usando a linguagem de programação Go
 1. **Instale Go**: Certifique-se de que você tem Go instalado na sua máquina. [Download Go](https://golang.org/dl/)
 
 2. **Clone o Repositório**:
-    ```bash
+    ```bashe
     git clone https://github.com/SamuelBarbosa1/Scraper.git
     cd Scraper
     ```
