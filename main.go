@@ -28,7 +28,7 @@ func enviarSMS(mensagem string) {
 	})
 
 	params := &openapi.CreateMessageParams{}
-	params.SetTo("+5561999544335")             // Número do destinatário
+	params.SetTo("+123456789")                 // Número do destinatário
 	params.SetFrom("YOUR_TWILIO_PHONE_NUMBER") // Número Twilio registrado
 	params.SetBody(mensagem)
 
