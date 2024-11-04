@@ -25,8 +25,8 @@ Este é um projeto de Web Scraper simples usando a linguagem de programação Go
     go mod init meu-projeto
     go get github.com/gocolly/colly
     go get github.com/gocolly/colly/proxy
-    github.com/jung-kurt/gofpdf
-	gopkg.in/gomail.v2
+    go get github.com/jung-kurt/gofpdf
+    go get gopkg.in/gomail.v2
     ```
 
 4. **Execute o Scraper**:
