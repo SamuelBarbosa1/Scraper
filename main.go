@@ -136,5 +136,3 @@ func main() {
 		log.Fatalln("Falha ao iniciar scraping", err)
 	}
 }
-
-// test
