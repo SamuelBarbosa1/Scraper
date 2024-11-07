@@ -1,6 +1,6 @@
 # Web Scraper em Go
 
-Este é um projeto de Web Scraper simples usando a linguagem de programação Go e a biblioteca `colly`. O scraper coleta dados de um site, salva em um arquivo CSV e respeita limites e atrasos configuráveis.
+Este é um projeto de Web Scraper simples usando a linguagem de programação Go e a biblioteca `colly, Twilio`. O scraper coleta dados de um site, salva em um relatorio e respeita limites e atrasos configuráveis.
 
 ## Funcionalidades
 
