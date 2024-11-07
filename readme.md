@@ -5,8 +5,6 @@ Este é um projeto de Web Scraper simples usando a linguagem de programação Go
 ## Funcionalidades
 
 - Coleta de links e dados específicos (preços)
-- Salva dados em um arquivo CSV
-- Configuração de proxies para evitar bloqueios de IP
 - Atrasos aleatórios entre requisições para evitar detecção
 - Tratamento de erros e logs de requisições
 
@@ -37,26 +35,21 @@ Este é um projeto de Web Scraper simples usando a linguagem de programação Go
 
 ```
 go run main.go
-Iniciando scraping em: https://example.com
-Visitando https://example.com
-Link encontrado: https://www.iana.org/domains/example
-Visitando https://www.iana.org/domains/example
-Link encontrado: /
-Visitando http://www.iana.org/
-Link encontrado: about/
-Visitando http://www.iana.org/about/
-```
+Iniciando scraping em: https://books.toscrape.com/
+Visitando https://books.toscrape.com/
+Produto encontrado: A Light in the ... - Preço: 51.77
+Produto encontrado: Tipping the Velvet - Preço: 53.74
+Produto encontrado: Soumission - Preço: 50.10
+Produto encontrado: Sharp Objects - Preço: 47.82
 
 ## Atualizações 
 - 1. Captura de sinais do sistema (SIGINT e SIGTERM):
-Para detectar quando Ctrl + C é pressionado e permitir que o programa execute tarefas de encerramento (como gerar o relatório em PDF e enviar o e-mail) antes de sair.
+Para detectar quando Ctrl + C é pressionado e permitir que o programa execute tarefas de encerramento (como gerar o relatório e enviar pelo SMS) antes de sair.
 
-- 2. Função para geração de relatório PDF (gerarRelatorioPDF):
-Essa função cria um relatório PDF dos preços coletados durante o scraping, salvando-o localmente como relatorio.pdf.
+- 2. Função para geração de relatório
+Essa função cria um relatório  dos preços coletados durante o scraping, salvando-o localmente 
 
-- 3. Envio de e-mail de notificação (enviarNotificacao):
-    A função envia um e-mail informando que o processo de scraping foi concluído com sucesso.
-    Utiliza o pacote gomail para enviar e-mails via SMTP.
+- 3. Removi a opção enviar pelo email, agora é apenas via SMS por questões de melhorias  de segurança.
 
 - 4. Manuseio de erros de rede:
     Tratamento de erros de conexão com OnError e uma lógica para retry automático em caso de falhas (exemplo: r.Request.Retry()).
@@ -64,5 +57,35 @@ Essa função cria um relatório PDF dos preços coletados durante o scraping, s
 - 5. Atraso aleatório entre requisições:
     Adicionamos um atraso de tempo aleatório entre requisições para evitar sobrecarregar o site que está sendo raspado.
 
-- 6. Goroutine para capturar sinais e realizar tarefas de limpeza:
-    Uma goroutine foi configurada para aguardar um sinal de interrupção e garantir que as tarefas de geração de PDF e envio de e-mail sejam realizadas antes do encerramento do programa.
+- 6. Removi o modo enviar por Email, pois estava dando muitos problemas por conta de autenticação ou coisa parecidas, então joguei tudo via SMS.
+
+- 7. Adicionei um campo para o usuário informar o número do seu celular.
+
+## Bugs 
+
+- 1. Problema de autenticação no email, removi a opção de enviar.
+
+- 2. Problema de atraso entre requisições, removi a opção.
+
+- 3. Problema de tratamento de erros de rede, removi a opção.
+
+## Sugestões de Melhoria 
+- 1.  Implementar um sistema de cache para evitar requisições desnecessáreas ao remetente.
+
+- 2.  Implementar um sistema de autenticação para evitar que qualquer pessoa possa enviar mensagens pelo sistema.
+
+- 3.  Implementar um sistema de monitoramento para detectar problemas no sistema e enviar alertas para os administr.
+
+- 4.  Implementar um sistema de backup para garantir a segurança dos dados do codigo.
+
+- 5.  Implementar um sistema de atualização automática para garantir que o sistema esteja sempre atual.
+
+- 6.  Implementar  um sistema de log para registrar todas as ações realizadas pelo sistema.
+
+## Atualizações 
+
+- 1. Removemos muitas linhas de codigos que não serão mais necessárias, assim podemos corrigir erros futuros com um codigo mais limpo.
+
+- 2. Adicionamos um campo para o usuário informar o número do seu celular.
+
+<p align="center"> <img src="./fotos/scrap.png" width="50%"> <img src="./fotos/sms.png" width="50%"> </p>
