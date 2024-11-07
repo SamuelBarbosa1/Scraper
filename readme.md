@@ -41,7 +41,7 @@ Produto encontrado: A Light in the ... - Preço: 51.77
 Produto encontrado: Tipping the Velvet - Preço: 53.74
 Produto encontrado: Soumission - Preço: 50.10
 Produto encontrado: Sharp Objects - Preço: 47.82
-
+````
 ## Atualizações 
 - 1. Captura de sinais do sistema (SIGINT e SIGTERM):
 Para detectar quando Ctrl + C é pressionado e permitir que o programa execute tarefas de encerramento (como gerar o relatório e enviar pelo SMS) antes de sair.
@@ -88,4 +88,5 @@ Essa função cria um relatório  dos preços coletados durante o scraping, salv
 
 - 2. Adicionamos um campo para o usuário informar o número do seu celular.
 
-<p align="center"> <img src="./fotos/scrap.png" width="50%"> <img src="./fotos/sms.png" width="50%"> </p>
+## Fotos
+<p align="center"> <img src="./fotos/scrap.png" width="40"> <img src="./fotos/sms.png" width="40%"> </p>
