@@ -16,8 +16,7 @@ import (
 
 func formatPrice(rawPrice string) string {
 	formatted := strings.TrimSpace(rawPrice)
-	formatted = strings.ReplaceAll(formatted, "$", "")
-	formatted = strings.ReplaceAll(formatted, ",", "")
+	formatted = strings.ReplaceAll(formatted, "£", "")
 	return formatted
 }
 
@@ -28,8 +27,8 @@ func enviarSMS(mensagem string) {
 	})
 
 	params := &openapi.CreateMessageParams{}
-	params.SetTo("+123456789")                 // Número do destinatário
-	params.SetFrom("YOUR_TWILIO_PHONE_NUMBER") // Número Twilio registrado
+	params.SetTo("+556199999999")  // Número do destinatário
+	params.SetFrom("+19999999999") // Número Twilio registrado
 	params.SetBody(mensagem)
 
 	resp, err := client.Api.CreateMessage(params)
@@ -55,10 +54,11 @@ func main() {
 	c.Limit(&colly.LimitRule{
 		DomainGlob:  "*",
 		Parallelism: 2,
-		Delay:       2 * time.Second,
+		Delay:       2 * time.Second, // aqui  você pode ajustar o tempo de espera
+
 	})
 
-	var precos []string
+	var produtos []string
 
 	// Configurar handlers do coletor
 	c.OnError(func(r *colly.Response, err error) {
@@ -66,27 +66,33 @@ func main() {
 	})
 
 	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visitando", r.URL.String())
+		fmt.Println("Visitando", r.URL.String()) // aqui  você pode fazer o que quiser com a URL que ele irá visitar
+
 	})
 
-	c.OnHTML(".price-class", func(e *colly.HTMLElement) {
-		price := formatPrice(e.Text)
-		fmt.Println("Preço encontrado:", price)
-		precos = append(precos, price)
+	c.OnHTML(".product_pod", func(e *colly.HTMLElement) {
+		titulo := e.ChildText("h3 a")
+		preco := formatPrice(e.ChildText(".price_color"))
+		fmt.Printf("Produto encontrado: %s - Preço: %s\n", titulo, preco) //  aqui você pode fazer o que quiser com o produto encontrado
+
+		produtos = append(produtos, fmt.Sprintf("%s - £%s", titulo, preco))
 	})
 
 	// Goroutine para capturar sinal de interrupção
 	go func() {
 		<-sigs
-		fmt.Println("\nInterrupção detectada. Finalizando...")
-		mensagem := "Relatório de Preços: " + strings.Join(precos, ", ")
+		fmt.Println("\nInterrupção detectada. Finalizando...") // aqui quando você apertar  Ctrl+C ele irá finalizar o programa
+
+		mensagem := "Relatório de Produtos:\n" + strings.Join(produtos, "\n") // aqui ele jogará  todos os produtos encontrados em uma mensagem via SMS
+
 		enviarSMS(mensagem)
 		os.Exit(0)
 	}()
 
 	// Iniciar o scraping
-	fmt.Println("Iniciando scraping em: https://example.com")
-	err := c.Visit("https://example.com")
+	fmt.Println("Iniciando scraping em: https://books.toscrape.com/") // colocar link ou url de qualquer site que você deseja, aqui por exemplo estou usando o books
+	err := c.Visit("https://books.toscrape.com/")                     // aqui ele vai visitar o o site ou url que na qual você  colocou
+
 	if err != nil {
 		log.Fatalln("Falha ao iniciar scraping", err)
 	}
