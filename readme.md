@@ -89,4 +89,4 @@ Essa função cria um relatório  dos preços coletados durante o scraping, salv
 - 2. Adicionamos um campo para o usuário informar o número do seu celular.
 
 ## Fotos
-<p align="center"> <img src="./fotos/scrap.png" width="40"> <img src="./fotos/sms.png" width="40%"> </p>
+<p align="center"> <img src="./fotos/scrap.png" width="60%"> <img src="./fotos/sms.png" width="40%"> </p>
